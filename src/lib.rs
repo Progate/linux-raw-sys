@@ -1,5 +1,7 @@
 #![allow(non_camel_case_types, non_upper_case_globals, non_snake_case)]
 #![cfg_attr(not(feature = "std"), no_std)]
+// BrowserOS (`wasm32-browseros-linux-musl`) runs WebAssembly with the Linux ABI of riscv32, so it
+// uses the riscv32 definitions.
 
 #[cfg(feature = "std")]
 pub use std::os::raw as ctypes;
@@ -671,51 +673,51 @@ pub mod system;
 #[path = "powerpc64/xdp.rs"]
 pub mod xdp;
 #[cfg(feature = "errno")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/errno.rs"]
 pub mod errno;
 #[cfg(feature = "general")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/general.rs"]
 pub mod general;
 #[cfg(feature = "if_ether")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/if_ether.rs"]
 pub mod if_ether;
 #[cfg(feature = "if_packet")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/if_packet.rs"]
 pub mod if_packet;
 #[cfg(feature = "io_uring")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/io_uring.rs"]
 pub mod io_uring;
 #[cfg(feature = "ioctl")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/ioctl.rs"]
 pub mod ioctl;
 #[cfg(feature = "mempolicy")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/mempolicy.rs"]
 pub mod mempolicy;
 #[cfg(feature = "net")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/net.rs"]
 pub mod net;
 #[cfg(feature = "netlink")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/netlink.rs"]
 pub mod netlink;
 #[cfg(feature = "prctl")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/prctl.rs"]
 pub mod prctl;
 #[cfg(feature = "system")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/system.rs"]
 pub mod system;
 #[cfg(feature = "xdp")]
-#[cfg(target_arch = "riscv32")]
+#[cfg(any(target_arch = "riscv32", all(target_arch = "wasm32", target_vendor = "browseros")))]
 #[path = "riscv32/xdp.rs"]
 pub mod xdp;
 #[cfg(feature = "errno")]
